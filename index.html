@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenida - Premios DeClausura 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --event-photo: url('WhatsApp Image 2026-03-31 at 12.38.45.jpeg');
+      --blue-50:  #f0f6ff;
+      --blue-100: #daeaff;
+      --blue-200: #a8cfff;
+      --blue-400: #4a9eff;
+      --blue-500: #1a7ef0;
+      --blue-600: #1262c8;
+      --blue-700: #0d4a99;
+      --blue-900: #062050;
+      --gray-100: #f7f8fa;
+      --gray-200: #edf0f4;
+      --gray-300: #d8dde6;
+      --gray-500: #8a92a3;
+      --gray-700: #4a5568;
+      --gray-900: #1a2233;
+      --red:      #e05555;
+    }
+
+    html, body {
+      height: 100%;
+      background: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--gray-900);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.welcome-active {
+      overflow: hidden;
+    }
+
+    .welcome-page {
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(20px, 5vh, 48px) 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 14%, var(--blue-100) 0%, transparent 35%),
+        radial-gradient(circle at 88% 80%, var(--blue-50) 0%, transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+    }
+
+    .welcome-shell {
+      width: 100%;
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 36px;
+      align-items: stretch;
+      max-height: calc(100dvh - clamp(40px, 10vh, 96px));
+    }
+
+    .welcome-media,
+    .welcome-content {
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 18px 36px rgba(6, 32, 80, 0.08);
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .welcome-media {
+      position: relative;
+      min-height: clamp(380px, 58vh, 560px);
+    }
+
+    .welcome-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .welcome-content {
+      padding: clamp(26px, 4vh, 46px) clamp(24px, 3.5vw, 42px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(12px, 2.2vh, 22px);
+      animation: rise 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .welcome-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      color: #7C94A3;
+    }
+
+    .welcome-kicker::before {
+      content: '';
+      width: 22px;
+      height: 1.5px;
+      background: #7C94A3;
+      display: inline-block;
+    }
+
+    .welcome-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(34px, 4.1vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--gray-900);
+    }
+
+    .welcome-title em {
+      color: #7C94A3;
+      font-style: italic;
+    }
+
+    .welcome-details {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: clamp(16px, 2.4vh, 24px);
+      border: 1px solid var(--blue-100);
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--blue-50) 0%, #f5f9ff 100%);
+    }
+
+    .welcome-item {
+      font-size: 18px;
+      color: var(--gray-700);
+      line-height: 1.5;
+      letter-spacing: 0.1px;
+    }
+
+    .welcome-address {
+      font-size: 16px;
+      color: var(--gray-500);
+      line-height: 1.55;
+      margin-top: -4px;
+      padding-left: 31px;
+    }
+
+    .welcome-note {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.65;
+    }
+
+    .welcome-button {
+      width: fit-content;
+      border: none;
+      border-radius: 10px;
+      background: #7C94A3;
+      color: #ffffff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 28px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .welcome-button:hover { background: #6E8695; }
+    .welcome-button:active { transform: scale(0.98); }
+
+    .welcome-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .welcome-theme-mobile {
+      display: none;
+      margin-left: auto;
+    }
+
+    .welcome-page.is-transitioning .welcome-content {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      pointer-events: none;
+    }
+
+    .welcome-page.is-transitioning .welcome-media {
+      visibility: hidden;
+    }
+
+    .welcome-transition-overlay {
+      position: fixed;
+      z-index: 400;
+      border-radius: 20px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 18px 36px rgba(6, 32, 80, 0.08);
+      will-change: top, left, width, height, border-radius;
+      pointer-events: none;
+      transition:
+        top 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        border-radius 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .welcome-transition-overlay.expand {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .shell {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gray-200);
+      z-index: 100;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #7C94A3;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header {
+      position: fixed;
+      top: 3px; left: 0; right: 0;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 99;
+    }
+
+    .header-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: #7C94A3;
+      letter-spacing: -0.2px;
+    }
+
+    .header-steps {
+      font-size: 13px;
+      color: var(--gray-500);
+      font-weight: 400;
+    }
+
+    .header-steps strong {
+      color: #7C94A3;
+      font-weight: 500;
+    }
+
+    .theme-toggle {
+      border: none;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 1px;
+      transition: transform 0.15s;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .switch-track {
+      width: 42px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid var(--blue-200);
+      background: #e9f1fc;
+      position: relative;
+      transition: background 0.22s, border-color 0.22s;
+    }
+
+    .switch-thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ffd85a;
+      box-shadow: 0 1px 3px rgba(6, 32, 80, 0.25);
+      transition: transform 0.22s, background 0.22s;
+    }
+
+    .theme-toggle[aria-pressed='false'] .switch-thumb {
+      transform: translateX(21px);
+      background: #ffd85a;
+    }
+
+    .theme-toggle[aria-pressed='true'] .switch-track {
+      background: #2f4f74;
+      border-color: #2f4f74;
+    }
+
+    .theme-toggle[aria-pressed='true'] .switch-thumb {
+      transform: translateX(0);
+      background: #ffffff;
+    }
+
+    .theme-toggle[aria-pressed='false']:hover .switch-track {
+      background: #2a4565;
+      border-color: #2a4565;
+    }
+
+    .theme-toggle[aria-pressed='false']:hover .switch-thumb {
+      background: #ffffff;
+    }
+
+    .theme-toggle[aria-pressed='true']:hover .switch-track {
+      background: #e9f1fc;
+      border-color: #bed7f7;
+    }
+
+    .theme-toggle[aria-pressed='true']:hover .switch-thumb {
+      background: #ffd85a;
+    }
+
+    .form-area {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 78px;
+      background: var(--event-photo) center/cover no-repeat;
+    }
+
+    .step-wrapper {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .step {
+      display: none;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .step.active {
+      display: flex;
+      animation: rise 0.38s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    #step-5 {
+      gap: 16px;
+    }
+
+    #step-5 .step-question {
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.12;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .step-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1.5px;
+      background: #ffffff;
+    }
+
+    .step-question {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.18;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .step-question em {
+      font-style: italic;
+      color: #7C94A3;
+    }
+
+    .field-wrap { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-input {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid var(--gray-300);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #ffffff;
+      padding: 10px 0 14px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.25s;
+      caret-color: #7C94A3;
+    }
+
+    .form-input::placeholder { color: var(--gray-300); }
+    .form-input:focus { border-bottom-color: #7C94A3; }
+
+    .field-error {
+      font-size: 13px;
+      color: var(--red);
+      min-height: 18px;
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-continue {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C94A3;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-continue:hover  { background: #6E8695; }
+    .btn-continue:active { transform: scale(0.98); }
+
+    .btn-arrow {
+      font-size: 18px;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+
+    .btn-continue:hover .btn-arrow { transform: translateX(3px); }
+
+    .btn-hint {
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    .btn-hint kbd {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--gray-700);
+    }
+
+    .privacy-scroll {
+      background: var(--blue-50);
+      border: 1px solid var(--blue-100);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--gray-700);
+      max-height: 110px;
+      overflow-y: auto;
+    }
+
+    .privacy-scroll::-webkit-scrollbar { width: 4px; }
+    .privacy-scroll::-webkit-scrollbar-thumb { background: var(--blue-200); border-radius: 2px; }
+
+    .check-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .check-box {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border: 2px solid var(--gray-300);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 1px;
+      background: #fff;
+    }
+
+    .check-box.checked {
+      background: var(--blue-500);
+      border-color: var(--blue-500);
+    }
+
+    .check-box svg { display: none; }
+    .check-box.checked svg { display: block; }
+
+    .check-text {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #ffffff;
+    }
+
+    .check-text a { color: #ffffff; text-decoration: underline; text-underline-offset: 3px; }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #7C94A3;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 15px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-submit:hover  { background: #6E8695; }
+    .btn-submit:active { transform: scale(0.98); }
+
+    .footer-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--gray-200);
+      z-index: 99;
+    }
+
+    .nav-arrows { display: flex; gap: 8px; }
+
+    .nav-btn {
+      width: 38px; height: 38px;
+      background: #fff;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 8px;
+      color: var(--gray-700);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.18s;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      border-color: #7C94A3;
+      color: #7C94A3;
+      background: rgba(124, 148, 163, 0.14);
+    }
+
+    .nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+    .step-dots { display: flex; gap: 7px; align-items: center; }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gray-300);
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: #7C94A3;
+      transform: scale(1.35);
+    }
+
+    .dot.done {
+      background: #A7B9C4;
+    }
+
+    .success-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .success-screen.show {
+      display: flex;
+      animation: rise 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .success-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--blue-50);
+      border: 2px solid var(--blue-200);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .success-icon svg { color: var(--blue-500); }
+
+    .success-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 36px;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .success-name {
+      color: #7C94A3;
+    }
+
+    .success-sub {
+      font-size: 15px;
+      color: #ffffff;
+      line-height: 1.65;
+      max-width: 360px;
+    }
+
+    .summary-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #d9e1e7;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+      text-align: left;
+    }
+
+    .sum-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7C94A3;
+      margin-bottom: 3px;
+    }
+
+    .sum-value {
+      font-size: 14px;
+      color: #1a2233;
+      font-weight: 400;
+      word-break: break-all;
+    }
+
+    body.dark-mode {
+      --blue-50:  #111d31;
+      --blue-100: #1a2a45;
+      --blue-200: #29486e;
+      --blue-400: #67abff;
+      --blue-500: #7ab8ff;
+      --blue-600: #9acbff;
+      --blue-700: #4585d7;
+      --blue-900: #264f86;
+      --gray-100: #101827;
+      --gray-200: #1f2a3c;
+      --gray-300: #314158;
+      --gray-500: #99a8c0;
+      --gray-700: #cfdae9;
+      --gray-900: #f2f6ff;
+      --red:      #ff9696;
+      background: #090f1b;
+      color: var(--gray-900);
+    }
+
+    body.dark-mode .welcome-page {
+      background:
+        radial-gradient(circle at 8% 10%, #1f3557 0%, transparent 36%),
+        radial-gradient(circle at 92% 88%, #0b1628 0%, transparent 44%),
+        linear-gradient(180deg, #070d18 0%, #0d1626 100%);
+    }
+
+    body.dark-mode .welcome-media,
+    body.dark-mode .welcome-content,
+    body.dark-mode .header,
+    body.dark-mode .footer-nav {
+      background: #101b2d;
+      border-color: var(--gray-200);
+    }
+
+    body.dark-mode .welcome-media,
+    body.dark-mode .welcome-content {
+      backdrop-filter: none;
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.45);
+    }
+
+    body.dark-mode .welcome-kicker {
+      color: #A5B8C3;
+    }
+
+    body.dark-mode .welcome-kicker::before {
+      background: #A5B8C3;
+    }
+
+    body.dark-mode .welcome-title em {
+      color: #A5B8C3;
+    }
+
+    body.dark-mode .welcome-details {
+      background: #162842;
+      border-color: #31527a;
+      box-shadow: inset 0 0 0 1px rgba(103, 171, 255, 0.14);
+    }
+
+    body.dark-mode .welcome-item {
+      color: #e6efff;
+    }
+
+    body.dark-mode .welcome-address,
+    body.dark-mode .welcome-note {
+      color: #b6c4db;
+    }
+
+    body.dark-mode .welcome-button {
+      background: #93A9B7;
+      color: #0b1728;
+    }
+
+    body.dark-mode .btn-continue,
+    body.dark-mode .btn-submit {
+      background: #93A9B7;
+      color: #0b1728;
+    }
+
+    body.dark-mode .welcome-button:hover,
+    body.dark-mode .btn-continue:hover,
+    body.dark-mode .btn-submit:hover {
+      background: #A5B8C3;
+    }
+
+    body.dark-mode .nav-btn {
+      background: #111a2a;
+    }
+
+    body.dark-mode .form-input {
+      color: #ffffff;
+      caret-color: #A5B8C3;
+    }
+
+    body.dark-mode .form-input:focus {
+      border-bottom-color: #A5B8C3;
+    }
+
+    body.dark-mode .form-input::placeholder {
+      color: #6e809c;
+    }
+
+    body.dark-mode .form-area {
+      background: var(--event-photo) center/cover no-repeat;
+    }
+
+    @media (max-width: 900px) {
+      body.welcome-active {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .welcome-page {
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 100vh;
+        height: auto;
+        padding: 16px;
+        overflow: visible;
+      }
+
+      .welcome-shell {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 14px;
+        height: auto;
+        max-height: none;
+      }
+
+      .welcome-media,
+      .welcome-content {
+        height: auto;
+        min-height: auto;
+      }
+
+      .welcome-media {
+        min-height: clamp(220px, 34vh, 320px);
+      }
+
+      .welcome-content {
+        justify-content: flex-start;
+        padding: clamp(16px, 2.6vh, 24px) 20px;
+        gap: 12px;
+      }
+
+      .welcome-title {
+        font-size: clamp(28px, 5.5vw, 38px);
+        line-height: 1.08;
+      }
+
+      .welcome-details {
+        padding: 14px 16px;
+        gap: 8px;
+      }
+
+      .welcome-item {
+        font-size: 15px;
+        line-height: 1.35;
+      }
+
+      .welcome-address {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .welcome-note {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .welcome-button {
+        padding: 12px 22px;
+      }
+
+      .welcome-actions {
+        width: 100%;
+      }
+
+      .welcome-theme-mobile {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header { padding: 0 20px; }
+      .welcome-page { padding: 14px; }
+      .welcome-shell {
+        grid-template-rows: auto;
+        height: auto;
+      }
+      .welcome-content { padding: 14px 16px; }
+      .welcome-title { font-size: clamp(24px, 8vw, 30px); }
+      .switch-track { width: 38px; height: 20px; }
+      .switch-thumb { width: 14px; height: 14px; }
+      .theme-toggle[aria-pressed='false'] .switch-thumb { transform: translateX(19px); }
+      .theme-toggle[aria-pressed='true'] .switch-thumb { transform: translateX(0); }
+      .footer-nav { padding: 12px 20px; }
+      .form-area { padding: 86px 20px 74px; }
+      #step-5 { gap: 14px; }
+      #step-5 .privacy-scroll { max-height: 96px; }
+      .summary-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="welcome-active">
+  <main class="welcome-page" id="welcome-screen">
+    <section class="welcome-shell" aria-label="Bienvenida Premios DeClausura 2026">
+      <figure class="welcome-media">
+        <img src="WhatsApp Image 2026-03-31 at 12.38.45.jpeg" alt="Imagen oficial de los Premios DeClausura 2026" />
+      </figure>
+
+      <article class="welcome-content">
+        <p class="welcome-kicker">Evento oficial</p>
+        <h1 class="welcome-title">
+          Ceremonia de entrega de los Premios<br />
+          <em>DeClausura 2026</em>
+        </h1>
+
+        <div class="welcome-details" aria-label="Datos del evento">
+          <p class="welcome-item">🗓️ Miércoles 3 de junio</p>
+          <p class="welcome-item">🕒 18:30 h</p>
+          <p class="welcome-item">📍 Torre Castelar-Pérez-Llorca</p>
+          <p class="welcome-address">Pº de la Castellana, 50, Madrid</p>
+        </div>
+
+        <p class="welcome-note">
+          Te esperamos para celebrar una noche especial junto a profesionales, equipos y proyectos destacados.
+        </p>
+
+        <div class="welcome-actions">
+          <button class="welcome-button" id="btn-start" type="button" onclick="startForm()">Comenzar formulario</button>
+          <button class="theme-toggle welcome-theme-mobile" id="theme-toggle-welcome-mobile" type="button" onclick="toggleTheme()" aria-pressed="false" aria-label="Activar modo oscuro">
+            <span class="switch-track" aria-hidden="true">
+              <span class="switch-thumb"></span>
+            </span>
+          </button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="shell" id="form-shell">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width:0%"></div>
+    </div>
+
+    <header class="header">
+      <span class="header-logo">Premios DeClausura 2026</span>
+      <span class="header-steps" id="step-count">Paso <strong>1</strong> de 6</span>
+    </header>
+
+    <main class="form-area" id="form-area">
+      <div class="step-wrapper" id="step-wrapper">
+        <div class="step active" id="step-0">
+          <span class="step-eyebrow">Nombre</span>
+          <h2 class="step-question">¿Cuál es tu<br><em>nombre</em>?</h2>
+          <div class="field-wrap">
+            <input class="form-input" id="f-nombre" type="text" placeholder="Tu nombre..." autocomplete="given-name" />
+            <p class="field-error" id="err-0"></p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-continue" type="button" onclick="next(0)">Continuar <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="step" id="step-1">
+          <span class="step-eyebrow">Apellidos</span>
+          <h2 class="step-question">¿Y tus<br><em>apellidos</em>?</h2>
+          <div class="field-wrap">
+            <input class="form-input" id="f-apellidos" type="text" placeholder="Tus apellidos..." autocomplete="family-name" />
+            <p class="field-error" id="err-1"></p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-continue" type="button" onclick="next(1)">Continuar <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="step" id="step-2">
+          <span class="step-eyebrow">Teléfono</span>
+          <h2 class="step-question">¿Tu número de<br><em>teléfono</em>?</h2>
+          <div class="field-wrap">
+            <input class="form-input" id="f-telefono" type="tel" placeholder="Ej: 600 000 000" autocomplete="tel" />
+            <p class="field-error" id="err-2"></p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-continue" type="button" onclick="next(2)">Continuar <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="step" id="step-3">
+          <span class="step-eyebrow">Correo electrónico</span>
+          <h2 class="step-question">¿Cuál es tu<br><em>email</em>?</h2>
+          <div class="field-wrap">
+            <input class="form-input" id="f-email" type="email" placeholder="tucorreo@empresa.com" autocomplete="email" />
+            <p class="field-error" id="err-3"></p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-continue" type="button" onclick="next(3)">Continuar <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="step" id="step-4">
+          <span class="step-eyebrow">Empresa</span>
+          <h2 class="step-question">¿A qué<br><em>empresa</em> perteneces?</h2>
+          <div class="field-wrap">
+            <input class="form-input" id="f-empresa" type="text" placeholder="Nombre de tu empresa..." autocomplete="organization" />
+            <p class="field-error" id="err-4"></p>
+          </div>
+          <div class="btn-row">
+            <button class="btn-continue" type="button" onclick="next(4)">Continuar <span class="btn-arrow">→</span></button>
+          </div>
+        </div>
+
+        <div class="step" id="step-5">
+          <span class="step-eyebrow">Política de privacidad</span>
+          <h2 class="step-question">Último<br><em>paso</em></h2>
+          <div class="privacy-scroll">
+            En cumplimiento del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales (LOPDGDD), le informamos de que los datos personales facilitados serán tratados por el organizador de la Gala de Premios con la finalidad exclusiva de gestionar su asistencia al evento. Los datos no serán cedidos a terceros salvo obligación legal. Puede ejercer sus derechos de acceso, rectificación, supresión, limitación, oposición y portabilidad enviando un escrito al responsable del tratamiento. La base legal del tratamiento es el consentimiento explícito del interesado.
+          </div>
+          <label class="check-label" onclick="toggleCheck()">
+            <div class="check-box" id="privacy-check">
+              <svg width="13" height="10" viewBox="0 0 13 10" fill="none">
+                <path d="M1.5 5L5 8.5L11.5 1.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="check-text">He leído y acepto la <a href="#" onclick="return false;">política de privacidad</a> y el tratamiento de mis datos personales para la gestión del evento.</span>
+          </label>
+          <p class="field-error" id="err-5"></p>
+          <div class="btn-row">
+            <button class="btn-submit" type="button" onclick="submitForm()">
+              Confirmar inscripción
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path d="M2 8.5h13M9.5 3l6 5.5-6 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-screen" id="success">
+        <div class="success-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M6 16.5L12.5 23L26 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
+        <p class="success-sub">Gracias por registrarte. Nos vemos en la Gala de Premios. Recibirás toda la información en tu correo electrónico.</p>
+        <div class="summary-card" id="summary-grid"></div>
+      </div>
+    </main>
+
+    <nav class="footer-nav" id="footer-nav">
+      <div class="nav-arrows">
+        <button class="nav-btn" id="btn-prev" type="button" onclick="goStep(currentStep - 1)" disabled title="Anterior">↑</button>
+        <button class="nav-btn" id="btn-next" type="button" onclick="goStep(currentStep + 1)" title="Siguiente">↓</button>
+      </div>
+      <div class="step-dots" id="dots"></div>
+      <button class="theme-toggle" id="theme-toggle-form" type="button" onclick="toggleTheme()" aria-pressed="false" aria-label="Activar modo oscuro">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-thumb"></span>
+        </span>
+      </button>
+    </nav>
+  </div>
+
+  <script>
+    var currentStep = 0;
+    var totalSteps  = 6;
+    var privacyOk   = false;
+    var isDarkMode  = false;
+    var isStartingForm = false;
+
+    var fields = ['f-nombre','f-apellidos','f-telefono','f-email','f-empresa'];
+    var validators = [
+      function(v){ return v.trim() ? '' : 'Por favor, introduce tu nombre.'; },
+      function(v){ return v.trim() ? '' : 'Por favor, introduce tus apellidos.'; },
+      function(v){ return /^[6-9]\d{8}$/.test(v.replace(/[\s\-]/g,'')) ? '' : 'Introduce un teléfono válido (9 dígitos, empieza por 6, 7, 8 o 9).'; },
+      function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'Introduce un email válido.'; },
+      function(v){ return v.trim() ? '' : 'Por favor, introduce el nombre de tu empresa.'; }
+    ];
+
+    function updateThemeUi() {
+      var toggles = [
+        document.getElementById('theme-toggle-welcome-mobile'),
+        document.getElementById('theme-toggle-form')
+      ];
+
+      for (var i = 0; i < toggles.length; i++) {
+        if (!toggles[i]) continue;
+        toggles[i].setAttribute('aria-pressed', isDarkMode ? 'true' : 'false');
+        toggles[i].setAttribute('aria-label', isDarkMode ? 'Activar modo claro' : 'Activar modo oscuro');
+      }
+    }
+
+    function toggleTheme() {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      updateThemeUi();
+    }
+
+    function showFormShell() {
+      document.getElementById('welcome-screen').style.display = 'none';
+      document.getElementById('form-shell').style.display = 'flex';
+      document.body.classList.remove('welcome-active');
+      buildDots();
+      goStep(0);
+    }
+
+    function startForm() {
+      if (isStartingForm) return;
+
+      var welcomeScreen = document.getElementById('welcome-screen');
+      var media = welcomeScreen ? welcomeScreen.querySelector('.welcome-media') : null;
+      var image = media ? media.querySelector('img') : null;
+      var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!welcomeScreen || !media || !image || prefersReducedMotion) {
+        showFormShell();
+        return;
+      }
+
+      isStartingForm = true;
+
+      var rect = media.getBoundingClientRect();
+      var overlay = document.createElement('div');
+      overlay.className = 'welcome-transition-overlay';
+      overlay.style.top = rect.top + 'px';
+      overlay.style.left = rect.left + 'px';
+      overlay.style.width = rect.width + 'px';
+      overlay.style.height = rect.height + 'px';
+      overlay.style.backgroundImage = 'url("' + image.currentSrc + '")';
+
+      document.body.appendChild(overlay);
+      welcomeScreen.classList.add('is-transitioning');
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          overlay.classList.add('expand');
+        });
+      });
+
+      var finished = false;
+
+      function finishTransition() {
+        if (finished) return;
+        finished = true;
+
+        if (overlay.parentNode) {
+          overlay.parentNode.removeChild(overlay);
+        }
+
+        welcomeScreen.classList.remove('is-transitioning');
+        showFormShell();
+        isStartingForm = false;
+      }
+
+      overlay.addEventListener('transitionend', function(e) {
+        if (e.propertyName === 'height') {
+          finishTransition();
+        }
+      });
+
+      setTimeout(finishTransition, 1000);
+    }
+
+    function buildDots() {
+      var d = document.getElementById('dots');
+      d.innerHTML = '';
+      for (var i = 0; i < totalSteps; i++) {
+        var dot = document.createElement('div');
+        dot.className = 'dot' + (i === currentStep ? ' active' : i < currentStep ? ' done' : '');
+        d.appendChild(dot);
+      }
+    }
+
+    function goStep(n) {
+      if (n < 0 || n >= totalSteps) return;
+      for (var i = 0; i < totalSteps; i++) {
+        document.getElementById('step-' + i).classList.remove('active');
+      }
+      currentStep = n;
+      document.getElementById('step-' + currentStep).classList.add('active');
+      document.getElementById('progress').style.width = Math.round((currentStep / totalSteps) * 100) + '%';
+      document.getElementById('btn-prev').disabled = currentStep === 0;
+      document.getElementById('btn-next').disabled = currentStep === totalSteps - 1;
+      document.getElementById('step-count').innerHTML = 'Paso <strong>' + (currentStep + 1) + '</strong> de ' + totalSteps;
+      buildDots();
+      setTimeout(function() {
+        var inp = document.querySelector('#step-' + currentStep + ' .form-input');
+        if (inp) inp.focus();
+      }, 80);
+    }
+
+    function next(idx) {
+      if (idx < fields.length) {
+        var val = document.getElementById(fields[idx]).value;
+        var err = validators[idx](val);
+        document.getElementById('err-' + idx).textContent = err;
+        if (err) return;
+      }
+      if (currentStep < totalSteps - 1) goStep(currentStep + 1);
+    }
+
+    function toggleCheck() {
+      privacyOk = !privacyOk;
+      var c = document.getElementById('privacy-check');
+      if (privacyOk) c.classList.add('checked'); else c.classList.remove('checked');
+      if (privacyOk) document.getElementById('err-5').textContent = '';
+    }
+
+    function submitForm() {
+      if (!privacyOk) {
+        document.getElementById('err-5').textContent = 'Debes aceptar la política de privacidad para continuar.';
+        return;
+      }
+
+      const nombre    = document.getElementById('f-nombre').value.trim();
+      const apellidos = document.getElementById('f-apellidos').value.trim();
+      const telefono  = document.getElementById('f-telefono').value.trim();
+      const email     = document.getElementById('f-email').value.trim();
+      const empresa   = document.getElementById('f-empresa').value.trim();
+
+      if (!nombre || !apellidos || !telefono || !email || !empresa) {
+        document.getElementById('err-5').textContent = 'Por favor, completa todos los campos antes de confirmar.';
+        return;
+      }
+
+      document.getElementById('err-5').textContent = '';
+
+      const formData = new FormData();
+      formData.append('EMAIL', email);
+      formData.append('FNAME', nombre);
+      formData.append('LNAME', apellidos);
+      formData.append('TELEFONO', telefono);
+      formData.append('EMPRESA', empresa);
+      formData.append('gdpr[67490]', 'Y');
+      formData.append('b_a285c477f8cdcb9f6fe5a53bc_030b7b409f', '');
+
+      const mailchimpActionUrl = 'https://declausura.us6.list-manage.com/subscribe/post?u=a285c477f8cdcb9f6fe5a53bc&id=030b7b409f&v_id=4619&f_id=002c1fe2f0';
+
+      const submitBtn = document.querySelector('.btn-submit');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Enviando...';
+      submitBtn.disabled = true;
+
+      fetch(mailchimpActionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      })
+      .then(function() {
+        mostrarPantallaExito();
+      })
+      .catch(function(error) {
+        console.error('Error al enviar a Mailchimp:', error);
+        alert('Hubo un problema al enviar tus datos. Por favor, inténtalo de nuevo más tarde.');
+      })
+      .finally(function() {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      });
+    }
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function mostrarPantallaExito() {
+      document.getElementById('step-wrapper').style.display = 'none';
+      document.getElementById('footer-nav').style.display   = 'none';
+      document.getElementById('progress').style.width       = '100%';
+      document.querySelector('.header-steps').textContent   = 'Completado';
+
+      var nombreConfirmado = document.getElementById('f-nombre').value.trim();
+      var tituloExito = document.getElementById('success-title');
+      if (tituloExito) {
+        var nombreSeguro = escapeHtml(nombreConfirmado || 'invitado/a');
+        tituloExito.innerHTML = 'Muchas gracias por su confirmación<br><span class="success-name">' + nombreSeguro + '</span>!';
+      }
+
+      const successDiv = document.getElementById('success');
+      successDiv.classList.add('show');
+
+      const data = [
+        { l: 'Nombre',     v: document.getElementById('f-nombre').value },
+        { l: 'Apellidos',  v: document.getElementById('f-apellidos').value },
+        { l: 'Teléfono',   v: document.getElementById('f-telefono').value },
+        { l: 'Email',      v: document.getElementById('f-email').value },
+        { l: 'Empresa',    v: document.getElementById('f-empresa').value }
+      ];
+
+      document.getElementById('summary-grid').innerHTML = data.map(function(d) {
+        return '<div><p class="sum-label">' + d.l + '</p><p class="sum-value">' + d.v + '</p></div>';
+      }).join('');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Enter') return;
+
+      if (document.getElementById('welcome-screen').style.display !== 'none') {
+        e.preventDefault();
+        startForm();
+        return;
+      }
+
+      if (currentStep < totalSteps - 1) {
+        e.preventDefault();
+        next(currentStep);
+      }
+    });
+
+    (function initTheme() {
+      isDarkMode = false;
+      document.body.classList.remove('dark-mode');
+      updateThemeUi();
+    })();
+  </script>
+</body>
+</html>
