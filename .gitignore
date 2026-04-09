@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+*.json
+declausura-2026-a54b155c2f03.json
+.DS_Store
+.netlify
+dist/
+build/

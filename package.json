@@ -1,0 +1,9 @@
+{
+  "name": "premios-declausura-2026",
+  "version": "1.0.0",
+  "description": "Formulario de registro para los Premios DeClausura 2026",
+  "dependencies": {
+    "google-spreadsheet": "^4.1.3",
+    "google-auth-library": "^8.8.0"
+  }
+}

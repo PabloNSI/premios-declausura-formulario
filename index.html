@@ -1225,35 +1225,39 @@
 
       document.getElementById('err-5').textContent = '';
 
-      const formData = new FormData();
-      formData.append('EMAIL', email);
-      formData.append('FNAME', nombre);
-      formData.append('LNAME', apellidos);
-      formData.append('TELEFONO', telefono);
-      formData.append('EMPRESA', empresa);
-      formData.append('gdpr[67490]', 'Y');
-      formData.append('b_a285c477f8cdcb9f6fe5a53bc_030b7b409f', '');
-
-      const mailchimpActionUrl = 'https://declausura.us6.list-manage.com/subscribe/post?u=a285c477f8cdcb9f6fe5a53bc&id=030b7b409f&v_id=4619&f_id=002c1fe2f0';
-
       const submitBtn = document.querySelector('.btn-submit');
       const originalText = submitBtn.innerHTML;
       submitBtn.innerHTML = 'Enviando...';
       submitBtn.disabled = true;
 
-      fetch(mailchimpActionUrl, {
+      const payload = {
+        nombre: nombre,
+        apellidos: apellidos,
+        telefono: telefono,
+        email: email,
+        empresa: empresa
+      };
+
+      fetch('/.netlify/functions/subscribe', {
         method: 'POST',
-        mode: 'no-cors',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
       })
-      .then(function() {
-        mostrarPantallaExito();
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if (data.success) {
+          mostrarPantallaExito();
+        } else {
+          throw new Error(data.error || 'Error desconocido');
+        }
       })
       .catch(function(error) {
-        console.error('Error al enviar a Mailchimp:', error);
-        alert('Hubo un problema al enviar tus datos. Por favor, inténtalo de nuevo más tarde.');
-      })
-      .finally(function() {
+        console.error('Error al enviar datos:', error);
+        document.getElementById('err-5').textContent = 'Hubo un problema al enviar tus datos. Por favor, inténtalo de nuevo más tarde.';
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
       });
