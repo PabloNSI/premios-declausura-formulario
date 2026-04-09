@@ -23,11 +23,21 @@ exports.handler = async (event) => {
     }
 
     // Credenciales de Google desde variables de entorno
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY;
+    
+    // Si está codificado en base64, decodificar
+    if (!privateKey.includes('BEGIN PRIVATE KEY')) {
+      privateKey = Buffer.from(privateKey, 'base64').toString('utf-8');
+    } else {
+      // Si tiene \n escapados, reemplazarlos
+      privateKey = privateKey.replace(/\\n/g, '\n');
+    }
+
     const credentials = {
       type: 'service_account',
       project_id: 'declausura-2026',
       private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      private_key: privateKey,
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       client_id: process.env.GOOGLE_CLIENT_ID,
       auth_uri: 'https://accounts.google.com/o/oauth2/auth',
