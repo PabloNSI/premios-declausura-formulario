@@ -1,10 +1,31 @@
+# Dependencias
 node_modules/
+package-lock.json
+yarn.lock
+
+# Variables de entorno
 .env
 .env.local
 .env.*.local
-*.json
+
+# Archivos sensibles
+*.json.rej
 declausura-2026-a54b155c2f03.json
-.DS_Store
-.netlify
+
+# Build y dist
 dist/
 build/
+.netlify/
+
+# Sistema
+.DS_Store
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
