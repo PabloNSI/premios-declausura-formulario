@@ -52,7 +52,10 @@
       padding: clamp(20px, 5vh, 48px) 24px;
       position: relative;
       overflow: hidden;
-      background: #7C94A3;
+      background:
+        radial-gradient(circle at 12% 14%, var(--blue-100) 0%, transparent 35%),
+        radial-gradient(circle at 88% 80%, var(--blue-50) 0%, transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
     }
 
     .welcome-shell {
@@ -358,10 +361,6 @@
       background: var(--event-photo) center/cover no-repeat;
     }
 
-    #form-area.success-active {
-      background: #7C94A3;
-    }
-
     .step-wrapper {
       width: 100%;
       max-width: 560px;
@@ -630,11 +629,11 @@
 
     .success-screen {
       display: none;
-      width: 100%;
-      max-width: 1080px;
-      grid-template-columns: 1.05fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
       gap: 36px;
-      align-items: stretch;
+      max-width: 900px;
+      width: 100%;
     }
 
     .success-screen.show {
@@ -642,36 +641,19 @@
       animation: rise 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
     }
 
-    .success-media {
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      box-shadow: 0 18px 36px rgba(6, 32, 80, 0.08);
-      overflow: hidden;
-      position: relative;
-      min-height: clamp(380px, 58vh, 560px);
-      background: var(--welcome-photo) center/cover no-repeat;
-      height: 100%;
-    }
-
-    .success-card-wrapper {
-      border: 1px solid var(--gray-200);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.82);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 18px 36px rgba(6, 32, 80, 0.08);
-      overflow: hidden;
-      padding: clamp(26px, 4vh, 46px) clamp(24px, 3.5vw, 42px);
+    .success-content {
       display: flex;
       flex-direction: column;
+      gap: 20px;
+      text-align: left;
       justify-content: center;
-      gap: clamp(12px, 2.2vh, 22px);
-      height: 100%;
     }
 
     .success-data-section {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      align-self: center;
     }
 
     .btn-close {
@@ -702,7 +684,7 @@
     .success-title {
       font-family: 'DM Serif Display', serif;
       font-size: 36px;
-      color: #1a2233;
+      color: #ffffff;
       line-height: 1.15;
     }
 
@@ -712,14 +694,14 @@
 
     .success-sub {
       font-size: 14px;
-      color: #4a5568;
+      color: #ffffff;
       line-height: 1.55;
       max-width: 320px;
     }
 
     .summary-card {
       width: 100%;
-      background: #f7f8fa;
+      background: #ffffff;
       border: 1px solid #d9e1e7;
       border-radius: 12px;
       padding: 24px 28px;
@@ -766,7 +748,10 @@
     }
 
     body.dark-mode .welcome-page {
-      background: #7C94A3;
+      background:
+        radial-gradient(circle at 8% 10%, #1f3557 0%, transparent 36%),
+        radial-gradient(circle at 92% 88%, #0b1628 0%, transparent 44%),
+        linear-gradient(180deg, #070d18 0%, #0d1626 100%);
     }
 
     body.dark-mode .welcome-media,
@@ -1085,14 +1070,13 @@
       </div>
 
       <div class="success-screen" id="success">
-        <div class="success-media"></div>
-        <div class="success-card-wrapper">
+        <div class="success-content">
           <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
           <p class="success-sub">Le agradecemos enormemente su tiempo para completar este formulario. Su participación es muy valiosa para nosotros, y esperamos con ilusión poder contar con su presencia en la ceremonia de entrega de los Premios DeClausura 2026.</p>
-          <div class="success-data-section">
-            <div class="summary-card" id="summary-grid"></div>
-            <button class="btn-close" type="button" onclick="location.reload()">Cerrar</button>
-          </div>
+        </div>
+        <div class="success-data-section">
+          <div class="summary-card" id="summary-grid"></div>
+          <button class="btn-close" type="button" onclick="location.reload()">Cerrar</button>
         </div>
       </div>
     </main>
@@ -1354,8 +1338,8 @@
       document.getElementById('step-wrapper').style.display = 'none';
       document.getElementById('footer-nav').style.display   = 'none';
       document.getElementById('progress').style.width       = '100%';
-      document.getElementById('form-area').classList.add('success-active');
       document.querySelector('.header-steps').textContent   = 'Completado';
+      document.getElementById('form-area').style.backgroundImage = "url('assets/2.jpeg')";
 
       var nombreConfirmado = document.getElementById('f-nombre').value.trim();
       var tituloExito = document.getElementById('success-title');
