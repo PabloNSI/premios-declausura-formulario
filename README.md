@@ -5,37 +5,26 @@ Formulario interactivo para la confirmación de asistencia a la Gala de Premios 
 ## 🚀 Características
 
 - ✅ Formulario responsivo con validaciones en tiempo real
-- ✅ Integración automática con Google Sheets
 - ✅ Tema claro/oscuro
 - ✅ Animaciones suaves
-- ✅ Función serverless con Netlify
-- ✅ Variables de entorno seguras
+- ✅ Pantalla de confirmación personalizada
+- ✅ Diseño moderno y elegante
 
 ## 📦 Stack Tecnológico
 
 - **Frontend:** HTML5, CSS3, JavaScript vanilla
-- **Backend:** Netlify Functions (Node.js)
-- **Base de datos:** Google Sheets API
-- **Hosting:** Netlify
-
-## 🔗 URLs
-
-- **Formulario en vivo:** https://formulario-premios-declausura-2026.netlify.app
-- **Repositorio:** https://github.com/PabloNSI/premios-declausura-formulario
+- **Hosting:** GitHub Pages o servidor estático
 
 ## 📋 Estructura del Proyecto
 
 ```
 .
+├── index.html                  # Formulario principal (desarrollo)
 ├── public/
-│   ├── index.html              # Formulario principal
+│   ├── index.html              # Formulario principal (producción)
 │   └── assets/
-│       └── event-image.jpeg    # Imagen del evento
-├── netlify/
-│   └── functions/
-│       └── subscribe.js        # Función serverless
-├── netlify.toml                # Configuración Netlify
-├── package.json                # Dependencias
+│       ├── 2.jpeg              # Imagen de bienvenida
+│       └── 3.jpeg              # Imagen del formulario
 ├── .gitignore                  # Archivos ignorados
 └── README.md                   # Este archivo
 ```
@@ -44,9 +33,8 @@ Formulario interactivo para la confirmación de asistencia a la Gala de Premios 
 
 ### Prerrequisitos
 
-- Node.js 18+
-- Netlify CLI (`npm install -g netlify-cli`)
-- Git
+- Un navegador web moderno
+- Servidor local (Live Server, http-server, etc.)
 
 ### Instalación
 
