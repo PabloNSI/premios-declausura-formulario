@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --event-photo: url('public/assets/3.jpeg');
+      --event-photo: url('public/assets/2.jpeg');
       --welcome-photo: url('public/assets/2.jpeg');
       --blue-50:  #f0f6ff;
       --blue-100: #daeaff;
@@ -358,11 +358,32 @@
       align-items: center;
       justify-content: center;
       padding: 100px 24px 78px;
-      background: var(--event-photo) center/cover no-repeat;
+      position: relative;
+      background: none;
     }
 
-    #form-area.success-active {
-      background: var(--welcome-photo) center/cover no-repeat;
+    .form-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--event-photo);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: blur(5px);
+      z-index: 0;
+    }
+
+    .form-area > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #form-area.success-active::before {
+      filter: none;
     }
 
     .step-wrapper {
@@ -836,8 +857,11 @@
       color: #6e809c;
     }
 
-    body.dark-mode .form-area {
-      background: var(--event-photo) center/cover no-repeat;
+    body.dark-mode .form-area::before {
+      background-image: var(--event-photo);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     @media (max-width: 900px) {
@@ -943,7 +967,7 @@
   <main class="welcome-page" id="welcome-screen">
     <section class="welcome-shell" aria-label="Bienvenida Premios DeClausura 2026">
       <figure class="welcome-media">
-        <img src="public/assets/3.jpeg" alt="Imagen oficial de los Premios DeClausura 2026" />
+        <img src="public/assets/2.jpeg" alt="Imagen oficial de los Premios DeClausura 2026" />
       </figure>
 
       <article class="welcome-content">
