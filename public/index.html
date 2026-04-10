@@ -52,10 +52,11 @@
       padding: clamp(20px, 5vh, 48px) 24px;
       position: relative;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 12% 14%, rgba(255,255,255, 0.1) 0%, transparent 35%),
-        radial-gradient(circle at 88% 80%, rgba(255,255,255, 0.05) 0%, transparent 40%),
-        linear-gradient(180deg, #1262c8 0%, #0d4a99 100%);
+      background: #7C94A3;
+      background-image:
+        radial-gradient(circle at 12% 14%, var(--blue-100) 0%, transparent 35%),
+        radial-gradient(circle at 88% 80%, var(--blue-50) 0%, transparent 40%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     }
 
     .welcome-shell {
@@ -362,7 +363,11 @@
     }
 
     #form-area.success-active {
-      background: linear-gradient(180deg, #1262c8 0%, #0d4a99 100%);
+      background: #7C94A3;
+      background-image:
+        radial-gradient(circle at 12% 14%, var(--blue-100) 0%, transparent 35%),
+        radial-gradient(circle at 88% 80%, var(--blue-50) 0%, transparent 40%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
     }
 
     .step-wrapper {
@@ -774,10 +779,11 @@
     }
 
     body.dark-mode .welcome-page {
-      background:
+      background: #7C94A3;
+      background-image:
         radial-gradient(circle at 8% 10%, #1f3557 0%, transparent 36%),
         radial-gradient(circle at 92% 88%, #0b1628 0%, transparent 44%),
-        linear-gradient(180deg, #070d18 0%, #0d1626 100%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     }
 
     body.dark-mode .welcome-media,
