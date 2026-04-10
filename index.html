@@ -53,9 +53,9 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at 12% 14%, var(--blue-100) 0%, transparent 35%),
-        radial-gradient(circle at 88% 80%, var(--blue-50) 0%, transparent 40%),
-        linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+        radial-gradient(circle at 12% 14%, rgba(255,255,255, 0.1) 0%, transparent 35%),
+        radial-gradient(circle at 88% 80%, rgba(255,255,255, 0.05) 0%, transparent 40%),
+        linear-gradient(180deg, #1262c8 0%, #0d4a99 100%);
     }
 
     .welcome-shell {
@@ -362,7 +362,7 @@
     }
 
     #form-area.success-active {
-      background: transparent;
+      background: linear-gradient(180deg, #1262c8 0%, #0d4a99 100%);
     }
 
     .step-wrapper {
