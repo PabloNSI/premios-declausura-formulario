@@ -12,6 +12,7 @@
 
     :root {
       --event-photo: url('assets/3.jpeg');
+      --welcome-photo: url('assets/2.jpeg');
       --blue-50:  #f0f6ff;
       --blue-100: #daeaff;
       --blue-200: #a8cfff;
@@ -81,13 +82,14 @@
     .welcome-media {
       position: relative;
       min-height: clamp(380px, 58vh, 560px);
+      background: var(--welcome-photo) center/cover no-repeat;
     }
 
     .welcome-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      display: none;
     }
 
     .welcome-content {
@@ -627,17 +629,23 @@
 
     .success-screen {
       display: none;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 24px;
-      max-width: 500px;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 36px;
+      max-width: 900px;
       width: 100%;
     }
 
     .success-screen.show {
-      display: flex;
+      display: grid;
       animation: rise 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    .success-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
     }
 
     .success-icon {
@@ -665,7 +673,6 @@
       font-size: 15px;
       color: #ffffff;
       line-height: 1.65;
-      max-width: 360px;
     }
 
     .summary-card {
@@ -897,6 +904,7 @@
       #step-5 { gap: 14px; }
       #step-5 .privacy-scroll { max-height: 96px; }
       .summary-card { grid-template-columns: 1fr; }
+      .success-screen { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1036,13 +1044,15 @@
       </div>
 
       <div class="success-screen" id="success">
-        <div class="success-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-            <path d="M6 16.5L12.5 23L26 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <div class="success-content">
+          <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <path d="M6 16.5L12.5 23L26 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
+          <p class="success-sub">Le agradecemos enormemente su tiempo para completar este formulario. Su participación es muy valiosa para nosotros, y esperamos con ilusión poder contar con su presencia en la ceremonia de entrega de los Premios DeClausura 2026.</p>
         </div>
-        <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
-        <p class="success-sub">Le agradecemos enormemente su tiempo para completar este formulario. Su participación es muy valiosa para nosotros, y esperamos con ilusión poder contar con su presencia en la ceremonia de entrega de los Premios DeClausura 2026.</p>
         <div class="summary-card" id="summary-grid"></div>
       </div>
     </main>
