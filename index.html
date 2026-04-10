@@ -1193,12 +1193,18 @@
     }
 
     function updateQuestionsWithName() {
-      var nombre = document.getElementById('f-nombre').value.trim();
+      var nombreInput = document.getElementById('f-nombre');
+      var nombre = nombreInput ? nombreInput.value.trim() : '';
+      console.log('updateQuestionsWithName - nombre:', nombre);
+      console.log('name-1 elemento:', document.getElementById('name-1'));
       if (nombre) {
         document.getElementById('name-1').textContent = nombre;
         document.getElementById('name-2').textContent = nombre;
         document.getElementById('name-3').textContent = nombre;
         document.getElementById('name-4').textContent = nombre;
+        console.log('Nombres actualizados');
+      } else {
+        console.log('Nombre vacío, no se actualiza');
       }
     }
 
@@ -1208,9 +1214,6 @@
         var err = validators[idx](val);
         document.getElementById('err-' + idx).textContent = err;
         if (err) return;
-      }
-      if (idx === 0) {
-        updateQuestionsWithName();
       }
       if (currentStep < totalSteps - 1) goStep(currentStep + 1);
     }
