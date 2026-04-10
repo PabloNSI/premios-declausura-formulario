@@ -1293,40 +1293,15 @@
 
       const submitBtn = document.querySelector('.btn-submit');
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'Enviando...';
+      submitBtn.innerHTML = 'Confirmando...';
       submitBtn.disabled = true;
 
-      const payload = {
-        nombre: nombre,
-        apellidos: apellidos,
-        telefono: telefono,
-        email: email,
-        empresa: empresa
-      };
-
-      fetch('/.netlify/functions/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        if (data.success) {
-          mostrarPantallaExito();
-        } else {
-          throw new Error(data.error || 'Error desconocido');
-        }
-      })
-      .catch(function(error) {
-        console.error('Error al enviar datos:', error);
-        document.getElementById('err-5').textContent = 'Hubo un problema al enviar tus datos. Por favor, inténtalo de nuevo más tarde.';
+      // Simulación: esperar un poco y mostrar pantalla de éxito
+      setTimeout(function() {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-      });
+        mostrarPantallaExito();
+      }, 800);
     }
 
     function escapeHtml(value) {
