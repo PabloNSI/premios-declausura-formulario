@@ -963,7 +963,7 @@
 
         <div class="step" id="step-1">
           <span class="step-eyebrow">Apellidos</span>
-          <h2 class="step-question">¿Y tus<br><em>apellidos</em>?</h2>
+          <h2 class="step-question"><span id="name-1"></span>, ¿cuáles son tus<br><em>apellidos</em>?</h2>
           <div class="field-wrap">
             <input class="form-input" id="f-apellidos" type="text" placeholder="Tus apellidos..." autocomplete="family-name" />
             <p class="field-error" id="err-1"></p>
@@ -975,7 +975,7 @@
 
         <div class="step" id="step-2">
           <span class="step-eyebrow">Teléfono</span>
-          <h2 class="step-question">¿Tu número de<br><em>teléfono</em>?</h2>
+          <h2 class="step-question"><span id="name-2"></span>, ¿cuál es tu número de<br><em>teléfono</em>?</h2>
           <div class="field-wrap">
             <input class="form-input" id="f-telefono" type="tel" placeholder="Ej: 600 000 000" autocomplete="tel" />
             <p class="field-error" id="err-2"></p>
@@ -987,7 +987,7 @@
 
         <div class="step" id="step-3">
           <span class="step-eyebrow">Correo electrónico</span>
-          <h2 class="step-question">¿Cuál es tu<br><em>email</em>?</h2>
+          <h2 class="step-question"><span id="name-3"></span>, ¿cuál es tu<br><em>email</em>?</h2>
           <div class="field-wrap">
             <input class="form-input" id="f-email" type="email" placeholder="tucorreo@empresa.com" autocomplete="email" />
             <p class="field-error" id="err-3"></p>
@@ -999,7 +999,7 @@
 
         <div class="step" id="step-4">
           <span class="step-eyebrow">Empresa</span>
-          <h2 class="step-question">¿A qué<br><em>empresa</em> perteneces?</h2>
+          <h2 class="step-question"><span id="name-4"></span>, ¿a qué<br><em>empresa</em> perteneces?</h2>
           <div class="field-wrap">
             <input class="form-input" id="f-empresa" type="text" placeholder="Nombre de tu empresa..." autocomplete="organization" />
             <p class="field-error" id="err-4"></p>
@@ -1042,7 +1042,7 @@
           </svg>
         </div>
         <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
-        <p class="success-sub">Gracias por registrarte. Nos vemos en la Gala de Premios. Recibirás toda la información en tu correo electrónico.</p>
+        <p class="success-sub">Le agradecemos enormemente su tiempo para completar este formulario. Su participación es muy valiosa para nosotros, y esperamos con ilusión poder contar con su presencia en la ceremonia de entrega de los Premios DeClausura 2026.</p>
         <div class="summary-card" id="summary-grid"></div>
       </div>
     </main>
@@ -1189,12 +1189,25 @@
       }, 80);
     }
 
+    function updateQuestionsWithName() {
+      var nombre = document.getElementById('f-nombre').value.trim();
+      if (nombre) {
+        document.getElementById('name-1').textContent = nombre;
+        document.getElementById('name-2').textContent = nombre;
+        document.getElementById('name-3').textContent = nombre;
+        document.getElementById('name-4').textContent = nombre;
+      }
+    }
+
     function next(idx) {
       if (idx < fields.length) {
         var val = document.getElementById(fields[idx]).value;
         var err = validators[idx](val);
         document.getElementById('err-' + idx).textContent = err;
         if (err) return;
+      }
+      if (idx === 0) {
+        updateQuestionsWithName();
       }
       if (currentStep < totalSteps - 1) goStep(currentStep + 1);
     }
