@@ -1183,6 +1183,9 @@
       document.getElementById('btn-next').disabled = currentStep === totalSteps - 1;
       document.getElementById('step-count').innerHTML = 'Paso <strong>' + (currentStep + 1) + '</strong> de ' + totalSteps;
       buildDots();
+      if (currentStep > 0) {
+        updateQuestionsWithName();
+      }
       setTimeout(function() {
         var inp = document.querySelector('#step-' + currentStep + ' .form-input');
         if (inp) inp.focus();
