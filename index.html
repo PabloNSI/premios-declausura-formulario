@@ -358,7 +358,14 @@
       align-items: center;
       justify-content: center;
       padding: 100px 24px 78px;
-      background: var(--event-photo) center/cover no-repeat;
+      background-image: var(--event-photo);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .form-area.success-active {
+      background-image: var(--welcome-photo);
     }
 
     .step-wrapper {
@@ -1339,7 +1346,7 @@
       document.getElementById('footer-nav').style.display   = 'none';
       document.getElementById('progress').style.width       = '100%';
       document.querySelector('.header-steps').textContent   = 'Completado';
-      document.getElementById('form-area').style.background = "url('assets/2.jpeg') center/cover no-repeat";
+      document.getElementById('form-area').classList.add('success-active');
 
       var nombreConfirmado = document.getElementById('f-nombre').value.trim();
       var tituloExito = document.getElementById('success-title');
