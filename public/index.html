@@ -1183,9 +1183,18 @@
       document.getElementById('btn-next').disabled = currentStep === totalSteps - 1;
       document.getElementById('step-count').innerHTML = 'Paso <strong>' + (currentStep + 1) + '</strong> de ' + totalSteps;
       buildDots();
+      
+      // Actualizar el nombre en las preguntas
       if (currentStep > 0) {
-        updateQuestionsWithName();
+        var nombre = document.getElementById('f-nombre').value.trim();
+        if (nombre) {
+          if (document.getElementById('name-1')) document.getElementById('name-1').textContent = nombre;
+          if (document.getElementById('name-2')) document.getElementById('name-2').textContent = nombre;
+          if (document.getElementById('name-3')) document.getElementById('name-3').textContent = nombre;
+          if (document.getElementById('name-4')) document.getElementById('name-4').textContent = nombre;
+        }
       }
+      
       setTimeout(function() {
         var inp = document.querySelector('#step-' + currentStep + ' .form-input');
         if (inp) inp.focus();
