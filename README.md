@@ -21,7 +21,6 @@ Formulario interactivo para la confirmación de asistencia a la Gala de Premios 
 ## 🔗 URLs
 
 - **Formulario en vivo:** https://formulario-premios-declausura-2026.netlify.app
-- **Google Sheet:** https://docs.google.com/spreadsheets/d/1mzSXgFQC1dpZEIVFUPVsmN9vaPzP6z9-h5wK2K1X58s/
 - **Repositorio:** https://github.com/PabloNSI/premios-declausura-formulario
 
 ## 📋 Estructura del Proyecto
