@@ -646,17 +646,40 @@
       flex-direction: column;
       gap: 20px;
       text-align: left;
+      justify-content: center;
     }
+
+    .success-data-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-self: center;
+    }
+
+    .btn-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #7C94A3;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-close:hover { background: #6E8695; }
+    .btn-close:active { transform: scale(0.98); }
 
     .success-icon {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--blue-50);
-      border: 2px solid var(--blue-200);
-      display: flex; align-items: center; justify-content: center;
+      display: none;
     }
 
-    .success-icon svg { color: var(--blue-500); }
+    .success-icon svg { display: none; }
 
     .success-title {
       font-family: 'DM Serif Display', serif;
@@ -777,14 +800,16 @@
     }
 
     body.dark-mode .btn-continue,
-    body.dark-mode .btn-submit {
+    body.dark-mode .btn-submit,
+    body.dark-mode .btn-close {
       background: #93A9B7;
       color: #0b1728;
     }
 
     body.dark-mode .welcome-button:hover,
     body.dark-mode .btn-continue:hover,
-    body.dark-mode .btn-submit:hover {
+    body.dark-mode .btn-submit:hover,
+    body.dark-mode .btn-close:hover {
       background: #A5B8C3;
     }
 
@@ -1045,15 +1070,13 @@
 
       <div class="success-screen" id="success">
         <div class="success-content">
-          <div class="success-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path d="M6 16.5L12.5 23L26 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
           <h2 class="success-title" id="success-title">¡Inscripción<br>confirmada!</h2>
           <p class="success-sub">Le agradecemos enormemente su tiempo para completar este formulario. Su participación es muy valiosa para nosotros, y esperamos con ilusión poder contar con su presencia en la ceremonia de entrega de los Premios DeClausura 2026.</p>
         </div>
-        <div class="summary-card" id="summary-grid"></div>
+        <div class="success-data-section">
+          <div class="summary-card" id="summary-grid"></div>
+          <button class="btn-close" type="button" onclick="location.reload()">Cerrar</button>
+        </div>
       </div>
     </main>
 
